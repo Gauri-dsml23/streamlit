@@ -196,7 +196,7 @@ index = pd.Index(
 
 data = pd.DataFrame(
     {
-        "Basic Formatting": [
+        "**Basic** Formatting": [
             "**Bold** text",
             "*Italic* text",
             "~Strikethrough~ text",
@@ -204,7 +204,7 @@ data = pd.DataFrame(
             "# Heading 1",
             "> This is a blockquote",
         ],
-        "Advanced Features": [
+        "*Advanced* Features": [
             ":red[Red text]",
             "[Streamlit](https://streamlit.io)",
             "![Image](app/static/cat.jpg)",
