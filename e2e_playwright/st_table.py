@@ -182,7 +182,7 @@ styled_df = weather_df.style.pipe(make_pretty)
 st.table(styled_df)
 
 
-st.subheader("Markdown formatting")
+st.header("Markdown Support")
 index = pd.Index(
     [
         ":material/check_circle: Row 1",
