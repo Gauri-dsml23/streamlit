@@ -631,7 +631,7 @@ class ArrowMixin:
 
     @gather_metrics("table")
     def table(self, data: Data = None) -> DeltaGenerator:
-        r"""Display a static table.
+        """Display a static table.
 
         While ``st.dataframe`` is geared towards large datasets and interactive
         data exploration, ``st.table`` is useful to display a small table without
