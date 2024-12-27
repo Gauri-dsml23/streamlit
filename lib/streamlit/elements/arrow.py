@@ -641,22 +641,11 @@ class ArrowMixin:
         Parameters
         ----------
         data : Anything supported by st.dataframe
-            The table data. All cells including the index and column headers
-            can optionally contain GitHub-flavored Markdown of the following types:
-            Bold, Italics, Strikethroughs, Inline Code, Links, and Images.
-            Images display like icons, with a max height equal to the font height.
+            The table data.
 
-            Unsupported Markdown elements are unwrapped so only their children
-            (text contents) render. Display unsupported elements as literal
-            characters by backslash-escaping them. E.g.,
-            ``"1\. Not an ordered list"``.
-
-            See the ``body`` parameter of |st.markdown|_ for additional,
-            supported Markdown directives.
-
-            For accessibility reasons, you should never set an empty label, but
-            you can hide it with ``label_visibility`` if needed. In the future,
-            we may disallow empty labels by raising an exception.
+            All cells including the index and column headers can optionally contain
+            GitHub-flavored Markdown. See the ``body`` parameter of
+            |st.markdown|_ for additional, supported Markdown directives.
 
             .. |st.markdown| replace:: ``st.markdown``
             .. _st.markdown: https://docs.streamlit.io/develop/api-reference/text/st.markdown
