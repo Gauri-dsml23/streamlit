@@ -180,3 +180,40 @@ def make_pretty(styler):
 styled_df = weather_df.style.pipe(make_pretty)
 
 st.table(styled_df)
+
+
+st.subheader("Markdown formatting")
+index = pd.Index(
+    [
+        ":material/check_circle: Row 1",
+        ":streamlit: Row 2",
+        "**Bold** Row 3",
+        "*Italic* Row 4",
+        "~Strikethrough~ Row 5",
+        "`Code Block` Row 6",
+    ]
+)
+
+data = pd.DataFrame(
+    {
+        "Basic Formatting": [
+            "**Bold** text",
+            "*Italic* text",
+            "~Strikethrough~ text",
+            "`Code Block` text",
+            "# Heading 1",
+            "> This is a blockquote",
+        ],
+        "Advanced Features": [
+            ":red[Red text]",
+            "[Streamlit](https://streamlit.io)",
+            "![Image](app/static/cat.jpg)",
+            "| Table | Row |\n|---|---|\n| Cell | Cell |",
+            "```python\ndef code():\n    pass\n```",
+            "<- -> <-> -- >= <= ~=",
+        ],
+    },
+    index=index,
+)
+
+st.table(data)
