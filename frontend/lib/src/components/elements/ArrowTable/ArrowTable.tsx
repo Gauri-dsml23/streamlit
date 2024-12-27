@@ -20,6 +20,7 @@ import range from "lodash/range"
 
 import { Quiver } from "@streamlit/lib/src/dataframes/Quiver"
 import { format as formatArrowCell } from "@streamlit/lib/src/dataframes/arrowFormatUtils"
+import StreamlitMarkdown from "@streamlit/lib/src/components/shared/StreamlitMarkdown/StreamlitMarkdown"
 
 import {
   StyledEmptyTableCell,
@@ -131,7 +132,7 @@ function generateTableCell(
           id={cssId}
           className={cssClass}
         >
-          {formattedContent}
+          <StreamlitMarkdown source={formattedContent} allowHTML={false} />
         </StyledTableCellHeader>
       )
     }
@@ -143,14 +144,14 @@ function generateTableCell(
           className={cssClass}
           style={style}
         >
-          {formattedContent}
+          <StreamlitMarkdown source={formattedContent} allowHTML={false} />
         </StyledTableCellHeader>
       )
     }
     case "data": {
       return (
         <StyledTableCell key={columnIndex} id={cssId} style={style}>
-          {formattedContent}
+          <StreamlitMarkdown source={formattedContent} allowHTML={false} />
         </StyledTableCell>
       )
     }
