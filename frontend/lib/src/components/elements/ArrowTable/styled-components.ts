@@ -37,17 +37,18 @@ export const StyledTable = styled.table(({ theme }) => ({
   borderRadius: theme.radii.default,
   borderSpacing: 0,
 
-  // Make table content rounded as well.
-  "& th:first-of-type": {
+  // Add border radius to corner cells to prevent colored background from showing
+  // through the border.
+  "& thead tr:first-child th:first-child": {
     borderTopLeftRadius: theme.radii.default,
   },
-  "& th:last-of-type": {
+  "& thead tr:first-child th:last-child": {
     borderTopRightRadius: theme.radii.default,
   },
-  "& tr:last-of-type td:first-of-type": {
+  "& tbody tr:last-child td:first-child": {
     borderBottomLeftRadius: theme.radii.default,
   },
-  "& tr:last-of-type td:last-of-type": {
+  "& tbody tr:last-child td:last-child": {
     borderBottomRightRadius: theme.radii.default,
   },
 
