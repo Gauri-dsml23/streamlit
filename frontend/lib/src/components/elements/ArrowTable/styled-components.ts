@@ -29,12 +29,28 @@ export const StyledTable = styled.table(({ theme }) => ({
   width: theme.sizes.full,
   marginBottom: theme.spacing.lg,
   color: theme.colors.bodyText,
+
   // This is required to add border radius but introduces double borders at the bottom
-  // and on the right. We're removing them below by making the bottom and right-most
-  // cells have no border.
+  // and on the right. We're removing them below in `styleCellFunction` by making the
+  // bottom and right-most cells have no border.
   borderCollapse: "separate",
   borderRadius: theme.radii.default,
   borderSpacing: 0,
+
+  // Make table content rounded as well.
+  "& th:first-of-type": {
+    borderTopLeftRadius: theme.radii.default,
+  },
+  "& th:last-of-type": {
+    borderTopRightRadius: theme.radii.default,
+  },
+  "& tr:last-of-type td:first-of-type": {
+    borderBottomLeftRadius: theme.radii.default,
+  },
+  "& tr:last-of-type td:last-of-type": {
+    borderBottomRightRadius: theme.radii.default,
+  },
+
   captionSide: "bottom",
   border: `${theme.sizes.borderWidth} solid ${theme.colors.borderColorLight}`,
   "& caption": {
