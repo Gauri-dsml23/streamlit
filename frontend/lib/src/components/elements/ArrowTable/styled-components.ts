@@ -22,6 +22,25 @@ export const StyledTableContainer = styled.div(({ theme }) => ({
   fontSize: theme.fontSizes.md,
   fontFamily: theme.genericFonts.bodyFont,
   lineHeight: theme.lineHeights.small,
+
+  captionSide: "bottom",
+  "& caption": {
+    fontFamily: theme.genericFonts.bodyFont,
+    fontSize: theme.fontSizes.sm,
+    paddingTop: theme.spacing.sm,
+    paddingBottom: 0,
+    color: theme.colors.fadedText60,
+    textAlign: "left",
+    wordWrap: "break-word",
+  },
+}))
+
+export const StyledTableBorder = styled.div(({ theme }) => ({
+  // Add the enclosing border on an extra container around the table. This ensures that
+  // when the table scrolls horizontally on small windows, it still shows a border all
+  // around the table and the table doesn't look cut off.
+  border: `${theme.sizes.borderWidth} solid ${theme.colors.borderColorLight}`,
+  borderRadius: theme.radii.default,
   overflow: ["auto", "overlay"],
 }))
 
@@ -29,11 +48,6 @@ export const StyledTable = styled.table(({ theme }) => ({
   width: theme.sizes.full,
   color: theme.colors.bodyText,
 
-  // This is required to add border radius but introduces double borders at the bottom
-  // and on the right. We're removing them below in `styleCellFunction` by making the
-  // bottom and right-most cells have no border.
-  borderCollapse: "separate",
-  borderRadius: theme.radii.default,
   borderSpacing: 0,
 
   // Add border radius to corner cells to prevent colored background from showing
@@ -50,21 +64,12 @@ export const StyledTable = styled.table(({ theme }) => ({
   "& tbody tr:last-child td:last-child": {
     borderBottomRightRadius: theme.radii.default,
   },
-
-  captionSide: "bottom",
-  border: `${theme.sizes.borderWidth} solid ${theme.colors.borderColorLight}`,
-  "& caption": {
-    fontFamily: theme.genericFonts.bodyFont,
-    fontSize: theme.fontSizes.sm,
-    paddingTop: theme.spacing.sm,
-    paddingBottom: 0,
-    color: theme.colors.fadedText60,
-    textAlign: "left",
-    wordWrap: "break-word",
-  },
 }))
 
 const styleCellFunction = (theme: EmotionTheme): CSSObject => ({
+  // Only have borders on the bottom and right of each cell. And remove the borders
+  // of the last row and column to prevent double borders together with the enclosing
+  // border from `StyledTableBorder`.
   borderBottom: `${theme.sizes.borderWidth} solid ${theme.colors.borderColorLight}`,
   "tbody tr:last-child &": {
     borderBottom: "none",

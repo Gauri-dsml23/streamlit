@@ -24,6 +24,7 @@ import { format as formatArrowCell } from "@streamlit/lib/src/dataframes/arrowFo
 import {
   StyledEmptyTableCell,
   StyledTable,
+  StyledTableBorder,
   StyledTableCell,
   StyledTableCellHeader,
   StyledTableContainer,
@@ -44,32 +45,34 @@ export function ArrowTable(props: Readonly<TableProps>): ReactElement {
   return (
     <StyledTableContainer className="stTable" data-testid="stTable">
       {cssStyles && <style>{cssStyles}</style>}
-      <StyledTable id={cssId} data-testid="stTableStyledTable">
-        {caption && <caption>{caption}</caption>}
-        {columnHeaders.length > 0 && (
-          <thead>
-            {columnHeaders.map(rowIndex =>
-              generateTableRow(table, rowIndex, columns)
-            )}
-          </thead>
-        )}
-        <tbody>
-          {dataRows.length === 0 ? (
-            <tr>
-              <StyledEmptyTableCell
-                data-testid="stTableStyledEmptyTableCell"
-                colSpan={columns || 1}
-              >
-                empty
-              </StyledEmptyTableCell>
-            </tr>
-          ) : (
-            dataRows.map(rowIndex =>
-              generateTableRow(table, rowIndex, columns)
-            )
+      <StyledTableBorder>
+        <StyledTable id={cssId} data-testid="stTableStyledTable">
+          {columnHeaders.length > 0 && (
+            <thead>
+              {columnHeaders.map(rowIndex =>
+                generateTableRow(table, rowIndex, columns)
+              )}
+            </thead>
           )}
-        </tbody>
-      </StyledTable>
+          <tbody>
+            {dataRows.length === 0 ? (
+              <tr>
+                <StyledEmptyTableCell
+                  data-testid="stTableStyledEmptyTableCell"
+                  colSpan={columns || 1}
+                >
+                  empty
+                </StyledEmptyTableCell>
+              </tr>
+            ) : (
+              dataRows.map(rowIndex =>
+                generateTableRow(table, rowIndex, columns)
+              )
+            )}
+          </tbody>
+        </StyledTable>
+      </StyledTableBorder>
+      {caption && <caption>{caption}</caption>}
     </StyledTableContainer>
   )
 }
