@@ -32,11 +32,12 @@ export const StyledTableContainer = styled.div(({ theme }) => ({
     color: theme.colors.fadedText60,
     textAlign: "left",
     wordWrap: "break-word",
+    display: "inline-block",
   },
 }))
 
 export const StyledTableBorder = styled.div(({ theme }) => ({
-  // Add the enclosing border on an extra container around the table. This ensures that
+  // Add the enclosing border on an extra wrapper around the table. This ensures that
   // when the table scrolls horizontally on small windows, it still shows a border all
   // around the table and the table doesn't look cut off.
   border: `${theme.sizes.borderWidth} solid ${theme.colors.borderColorLight}`,
