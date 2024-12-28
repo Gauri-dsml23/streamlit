@@ -333,7 +333,7 @@ export function format(x: DataType, type?: Type, field?: Field): string {
   const typeName = type && getTypeName(type)
 
   if (isNullOrUndefined(x)) {
-    return "None"
+    return "&nbsp;"
   }
 
   // date

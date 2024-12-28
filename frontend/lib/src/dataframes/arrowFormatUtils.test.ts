@@ -35,7 +35,7 @@ import { format } from "./arrowFormatUtils"
 
 describe("format", () => {
   test("null", () => {
-    expect(format(null)).toEqual("None")
+    expect(format(null)).toEqual("&nbsp;")
   })
 
   test("string", () => {
