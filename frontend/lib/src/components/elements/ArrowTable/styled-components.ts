@@ -53,13 +53,13 @@ export const StyledTable = styled.table(({ theme }) => ({
 
   // Add border radius to corner cells to prevent colored background from showing
   // through the border.
-  "& thead tr:first-of-type th:first-of-type": {
+  "& thead tr:first-child th:first-child": {
     borderTopLeftRadius: theme.radii.default,
   },
-  "& thead tr:first-of-type th:last-child": {
+  "& thead tr:first-child th:last-child": {
     borderTopRightRadius: theme.radii.default,
   },
-  "& tbody tr:last-child td:first-of-type": {
+  "& tbody tr:last-child td:first-child": {
     borderBottomLeftRadius: theme.radii.default,
   },
   "& tbody tr:last-child td:last-child": {
