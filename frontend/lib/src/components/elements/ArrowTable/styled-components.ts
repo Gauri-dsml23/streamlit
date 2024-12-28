@@ -27,7 +27,6 @@ export const StyledTableContainer = styled.div(({ theme }) => ({
 
 export const StyledTable = styled.table(({ theme }) => ({
   width: theme.sizes.full,
-  marginBottom: theme.spacing.lg,
   color: theme.colors.bodyText,
 
   // This is required to add border radius but introduces double borders at the bottom
