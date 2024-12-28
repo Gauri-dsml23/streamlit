@@ -49,9 +49,9 @@ export interface HostCommunicationProps {
   ) => void
   readonly pageChanged: (pageScriptHash: string) => void
   readonly isOwnerChanged: (isOwner: boolean) => void
-  readonly jwtHeaderChanged: (jwtPayload: {
-    jwtHeaderName: string
-    jwtHeaderValue: string
+  readonly fileUploadClientConfigChanged: (payload: {
+    prefix: string
+    headers: Record<string, string>
   }) => void
   readonly hostMenuItemsChanged: (menuItems: IMenuItem[]) => void
   readonly hostToolbarItemsChanged: (toolbarItems: IToolbarItem[]) => void
@@ -210,9 +210,14 @@ export default class HostCommunicationManager {
       // is a no-op, and we already resolved the promise to undefined
       // above.
       this.deferredAuthToken.resolve(message.authToken)
-      if (message.jwtHeaderName !== undefined) {
-        this.props.jwtHeaderChanged(message)
-      }
+    }
+
+    if (message.type === "SET_FILE_UPLOAD_CLIENT_CONFIG") {
+      const { prefix, headers } = message
+      this.props.fileUploadClientConfigChanged({
+        prefix,
+        headers,
+      })
     }
 
     if (message.type === "SET_IS_OWNER") {
